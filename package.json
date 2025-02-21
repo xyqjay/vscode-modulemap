@@ -1,0 +1,31 @@
+{
+  "name": "vscode-modulemap",
+  "displayName": "vscode-modulemap",
+  "description": "LLVM Module Map",
+  "publisher": "xyqjay",
+  "license": "MIT",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "*"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xyqjay/vscode-modulemap.git"
+  },
+  "contributes": {
+    "languages": [{
+      "id": "modulemap",
+      "aliases": ["LLVM Module Map", "modulemap"],
+      "extensions": [".modulemap"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "modulemap",
+      "scopeName": "source.modulemap",
+      "path": "./syntaxes/modulemap.tmLanguage.json"
+    }]
+  }
+}

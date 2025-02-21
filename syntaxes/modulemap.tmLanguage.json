@@ -1,0 +1,72 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "LLVM Module Map",
+	"scopeName": "source.modulemap",
+	"fileTypes": ["modulemap"],
+	"patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#module-declaration"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.modulemap",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.modulemap",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.modulemap",
+          "match": "\\b(module|framework|explicit|extern|export|use|link|header|umbrella|exclude|private|requires|textual|conflict|config_macros|system)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.modulemap",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.modulemap",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "module-declaration": {
+      "begin": "(module)\\s+(\\w+)\\s*({)",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.modulemap" },
+        "2": { "name": "entity.name.type.module.modulemap" },
+        "3": { "name": "punctuation.section.module.begin.modulemap" }
+      },
+      "end": "}",
+      "endCaptures": {
+        "0": { "name": "punctuation.section.module.end.modulemap" }
+      },
+      "patterns": [
+        { "include": "#comments" },
+        { "include": "#keywords" },
+        { "include": "#strings" },
+        { "include": "#module-declaration" }
+      ]
+    }
+  }
+}
